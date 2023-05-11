@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { Stack } from '@fluentui/react/lib/Stack';
+import Form from './components/form/Form';
+import TodoList from './components/todolist/TodoList';
+
+// Styles definition
+const outerStackStyles = {
+  root: {
+    background: '#faf9f8',
+    height: '100vh',
+    alignItems: 'center',
+    display: 'flex',
+  },
+};
+
+const innerStackStyles = {
+  root: {
+    background: '#ffffff',
+    width: 450,
+    height: 500,
+    margin: 50,
+    padding: 30
+  }
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Stack enableScopedSelectors styles={outerStackStyles}>
+      <Stack  styles={innerStackStyles}>
+        <Form/>
+        <TodoList/>
+      </Stack>
+    </Stack>
   );
 }
 
