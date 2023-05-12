@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Stack } from '@fluentui/react/lib/Stack';
 import Form from './components/form/Form';
-import TodoList from './components/todolist/TodoList';
+import TodoTab from './components/todotab/TodoTab';
 
-// Styles definition
 const outerStackStyles = {
   root: {
     background: '#faf9f8',
@@ -28,7 +27,7 @@ function App() {
     <Stack enableScopedSelectors styles={outerStackStyles}>
       <Stack  styles={innerStackStyles}>
         <Form/>
-        <TodoList/>
+        <TodoTab/>
       </Stack>
     </Stack>
   );

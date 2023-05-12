@@ -10,11 +10,12 @@ const TodoProvider =  ({ children }) => {
   const addTodo = (newTodo) => {
     if (newTodo.trim() !== '') {
       setTodos([...todos, {
-        id: todos.length,
+        id: todos.length+1,
         value: newTodo,
         done: false
       }]);
     }
+    console.log(todos)
   };
 
   const deleteTodo = (id) => {
@@ -22,9 +23,13 @@ const TodoProvider =  ({ children }) => {
     setTodos(updatedTodos);
   };
 
+  const updateTodo = (id, value, ) => {
+    const updatedTodos = todos.map(todo => todo.id === id ? {...todo, value: value } : todo);
+    setTodos(updatedTodos);
+  }
+
   const setDone = (id) => {
-    const updatedTodos = [...todos]
-    updatedTodos[id].done = !updatedTodos[id].done;
+    const updatedTodos = todos.map(todo => todo.id === id ? {...todo, done: !todo.done } : todo);
     setTodos(updatedTodos);
   };
 
@@ -37,6 +42,7 @@ const TodoProvider =  ({ children }) => {
     todos, active, completed,
     addTodo,
     deleteTodo,
+    updateTodo,
     setDone
   };
 
