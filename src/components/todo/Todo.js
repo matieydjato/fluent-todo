@@ -5,21 +5,24 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { TodoContext } from '../../context/TodoContext';
 import Form from '../form/Form';
 
+// Initialize  and get fluent icons
 initializeIcons();
-
 const EditIcon = () => <Icon iconName="Edit" />;
 const DeleteIcon = () => <Icon iconName="Cancel" />;
 
+// Todo component
 const Todo = (props) => {
-    const {deleteTodo, setDone} = useContext(TodoContext);
-    const [isUpdating, setIsUpdating] = useState(false);
+    const {deleteTodo, setDone} = useContext(TodoContext); // Get properties from todo context
+    const [isUpdating, setIsUpdating] = useState(false); // state to check if update is requested
 
+    // Update request handler
     const handleIsUpdating = () => {
-        setIsUpdating(!isUpdating);
+        setIsUpdating(!isUpdating); // 
     }
 
     return (
         <>
+            {/*  Check if update and call form component or show data*/}
             {!isUpdating ? (<Stack horizontal horizontalAlign="space-between">
                 <Stack.Item>
                     <Checkbox label={props.value} checked={props.done} onChange={() => setDone(props.id)}/>
@@ -27,14 +30,14 @@ const Todo = (props) => {
 
                 <Stack horizontal tokens={{childrenGap: 10}} styles={{ root: { paddingTop: 0}}}>
                     <Stack.Item>
-                        <button onClick={handleIsUpdating}><EditIcon/></button>
+                        <button onClick={handleIsUpdating}><EditIcon styles={{paddingTop: 5}}/></button>
                     </Stack.Item>
 
                     <Stack.Item>
                         <button onClick={() => deleteTodo(props.id)}><DeleteIcon/></button>
                     </Stack.Item>
                 </Stack>
-            </Stack>) : <Form todo={props} isUpdating={isUpdating} handleIsUpdating={handleIsUpdating}/>
+            </Stack>) : <Form todo={props} isUpdating={isUpdating} handleIsUpdating={handleIsUpdating}/> 
             }
         </>
     );

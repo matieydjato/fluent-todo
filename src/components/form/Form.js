@@ -4,6 +4,7 @@ import { Stack } from '@fluentui/react/lib/Stack';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { TodoContext } from '../../context/TodoContext';
 
+// Custom styles for form outer stack
 const styles = {
     root: {
       width: '100%',
@@ -18,21 +19,25 @@ const tokens = {
     childrenGap: 10,
 }
 
+// Custom styles for textfield
 const inputStyles = {
      root: { width: 300 },
 };
   
+// Form component
 const Form = (props) => {
-    const {addTodo, updateTodo} = useContext(TodoContext)
-    const [newTodo, setNewTodo] = useState('');
-    const [updatedTodo, setUpdatedTodo] = useState(props.isUpdating ? props.todo.value : '');
+    const {addTodo, updateTodo} = useContext(TodoContext) // Get properties from todo context
+    const [newTodo, setNewTodo] = useState(''); // new todo state
+    const [updatedTodo, setUpdatedTodo] = useState(props.isUpdating ? props.todo.value : ''); // updated todo state
 
+    // Add todo handler
     const handleAddTodo = (event) => {
         event.preventDefault();
         addTodo(newTodo);
-        setNewTodo('')
+        setNewTodo('') // Empty the texfield
     }
 
+    // Update todo handler
     const handleUpdateTodo = (event) => {
         event.preventDefault();
         updateTodo(props.todo.id, updatedTodo);
@@ -41,6 +46,7 @@ const Form = (props) => {
 
     return (
         <>
+            {/* Check if add or update and display the form */}
             {!props.isUpdating ? (<form onSubmit={handleAddTodo}>
                 <Stack horizontal styles={styles} tokens={tokens}>
                     <Stack.Item styles={inputStyles}>

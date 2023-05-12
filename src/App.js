@@ -3,6 +3,7 @@ import { Stack } from '@fluentui/react/lib/Stack';
 import Form from './components/form/Form';
 import TodoTab from './components/todotab/TodoTab';
 
+// Custom styles for outer stack
 const outerStackStyles = {
   root: {
     background: '#faf9f8',
@@ -22,6 +23,7 @@ const innerStackStyles = {
   }
 }
 
+// App component
 function App() {
   return (
     <Stack enableScopedSelectors styles={outerStackStyles}>

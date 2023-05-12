@@ -1,9 +1,11 @@
 import Todo from "../todo/Todo";
 
-const PivotContent = ({data}) => {
+// Todolist component
+const TodoList = ({data}) => {
     return(
-        data.map((todo, index) => <Todo key={index} id={todo.id} value={todo.value} done={todo.done}/>)
+        // Mapping props data and call Todo component
+        data.map((todo) => <Todo key={todo.id} id={todo.id} value={todo.value} done={todo.done}/>)
     )
 };
 
-export default PivotContent;
+export default TodoList;
